@@ -1,8 +1,3 @@
-# C++ Low Level Design (LLD) – Step by Step
-
-Welcome to my **C++ LLD Learning Repo** 
-I’m starting from the **core OOP concepts** before diving deep into **LLD design principles** and **patterns**.
-
 ## Current Focus: Object-Oriented Programming (OOP)
 Before going into system-level design, it’s important to master the basics of OOP — the foundation of LLD.
 
@@ -19,3 +14,23 @@ Before going into system-level design, it’s important to master the basics of 
 | **Polymorphism** | Same function behaving differently based on context | `/polymorphism/` |
 
 ---
+
+## 🧠 Quick Recap
+
+### 🔹 Class & Object Example
+
+```cpp
+
+class Car {
+public:
+    string brand;
+    void drive() {
+        cout << brand << " is driving..." << endl;
+    }
+};
+
+int main() {
+    Car c1;
+    c1.brand = "Tesla";
+    c1.drive();
+}
