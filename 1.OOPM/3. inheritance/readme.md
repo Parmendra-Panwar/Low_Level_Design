@@ -1,22 +1,22 @@
-# 🧬 Inheritance in C++
+# Inheritance in C++
 
-### 🧠 What is Inheritance?
+### What is Inheritance?
 **Inheritance** is an OOP concept where one class (child or derived class) **inherits properties and behaviors** from another class (parent or base class).  
 It helps in **reusing code**, **avoiding duplication**, and **creating logical hierarchies**.
 
 In simple words:  
-➡️ Inheritance means **“using old code to build new code”**.
+Inheritance means **“using old code to build new code”**.
 
 ---
 
-### 🎯 Why Use Inheritance?
+### Why Use Inheritance?
 - Promotes **code reusability**
 - Helps in **extending functionality**
 - Makes code **organized and maintainable**
 
 ---
 
-### ⚙️ Basic Syntax
+### Basic Syntax
 
 ```cpp
 class Base {
@@ -28,7 +28,7 @@ class Derived : access_modifier Base {
 };
 
 
-## 🧩 Example: Simple Inheritance
+##  Example: Simple Inheritance
 ### 1️⃣ Single Inheritance
 A single child inherits from a single parent.
 ```cpp
