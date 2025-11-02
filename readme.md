@@ -19,3 +19,7 @@ Before going into system-level design, it’s important to master the basics of 
 | **Polymorphism** | Same function behaving differently based on context | `/polymorphism/` |
 
 ---
+
+
+for theory 
+ByteByteGo
