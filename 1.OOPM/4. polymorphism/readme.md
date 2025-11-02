@@ -1,9 +1,3 @@
-Here’s your fixed and fully formatted **GitHub README.md** version.  
-Indentation, markdown headers, and code block syntax have been cleaned and standardized.
-
-***
-
-```markdown
 # Polymorphism in C++
 
 ## What is Polymorphism?
@@ -231,7 +225,3 @@ int main() {
 | Flexibility | Less | More |
 | Memory Usage | Fixed | Uses vtable (slightly more) |
 ```
-
-***
-
-Would you like me to add a short “Summary” section at the end for better closure when you publish it on GitHub?
