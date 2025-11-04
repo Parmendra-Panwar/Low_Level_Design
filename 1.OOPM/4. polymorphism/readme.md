@@ -37,7 +37,7 @@ It includes:
 ### Function Overloading
 Multiple functions with the same name but different parameters.
 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -69,7 +69,7 @@ int main() {
 ### Operator Overloading
 Redefining the behavior of an operator for user-defined types.
 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -105,7 +105,7 @@ It lets the base class pointer call methods of derived classes dynamically.
 
 ### Example: Virtual Functions
 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -157,7 +157,7 @@ int main() {
 ### Pure Virtual Functions and Abstract Classes
 If a class has a function declared as **pure virtual**, it becomes an **abstract class**.
 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
@@ -189,7 +189,7 @@ int main() {
 ### Virtual Destructors
 Used to ensure the proper destruction of derived objects via base class pointers.
 
-```
+```cpp
 #include <iostream>
 using namespace std;
 
