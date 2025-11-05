@@ -36,8 +36,8 @@ public:
 
 int main() {
 
-    Parent* parent = new Parent();
     Parent* child = new Child();
+    Parent* parent = new Parent();
 
     //Client* client = new Client(parent);
     Client* client = new Client(child);
