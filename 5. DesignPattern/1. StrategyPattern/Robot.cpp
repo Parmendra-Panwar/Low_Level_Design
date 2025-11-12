@@ -83,8 +83,7 @@ class Type1Robot : public Robot {
 
 class Type2Robot : public Robot {
   public:
-    Type2Robot(WalkableRobot* wr, TalkableRobot* tr)
-      : Robot(wr, tr) {}
+    Type2Robot(): Robot(new NormalWalk(), new NoTalk()){}    
 
     void projection() override {
       cout << "Type2 Robot Projection" << endl;
@@ -101,7 +100,7 @@ int main() {
 
   cout << endl;
 
-  Robot* robot2 = new Type2Robot(new NoWalk(), new NormalTalk());
+  Robot* robot2 = new Type2Robot();
   robot2->walk();        // Delegates to NoWalk
   robot2->talk();        // Delegates to NormalTalk
   robot2->projection();  // Type2-specific
