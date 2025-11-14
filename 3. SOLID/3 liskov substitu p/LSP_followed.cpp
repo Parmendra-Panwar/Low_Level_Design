@@ -110,7 +110,7 @@ int main() {
     vector<DepositOnlyAccount*> depositOnlyAccounts;
     depositOnlyAccounts.push_back(new FixedTermAccount());
 
-    BankClient* client = new BankClient (withdrawableAccounts, depositOnlyAccounts);
+    BankClient* client = new BankClient(withdrawableAccounts, depositOnlyAccounts);
     client->processTransactions();
 
     return 0;

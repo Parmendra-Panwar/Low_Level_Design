@@ -30,4 +30,6 @@ Before going into system-level design, it’s important to master the basics of 
 
 
 for theory 
-ByteByteGo, GFG
+ByteByteGo, GFG (https://www.geeksforgeeks.org/system-design/creational-design-pattern/)
+
+software development- https://www.geeksforgeeks.org/software-engineering/top-8-software-development-models-used-in-industry/
