@@ -77,7 +77,7 @@ class Order {
             }
         }
 
-        const vector<MenuItem>& getItmes() const {
+        const vector<MenuItem>& getItems() const {
             return items;
         }
 

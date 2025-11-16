@@ -52,7 +52,7 @@ class Cart{
             return restaurant;
         }
 
-        const vector<MenuItem>& getItmes() const{
+        const vector<MenuItem>& getItems() const{
             return items;
         }
 };
