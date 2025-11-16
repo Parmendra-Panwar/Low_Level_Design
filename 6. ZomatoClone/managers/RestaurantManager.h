@@ -1,5 +1,5 @@
-#ifndef RESTAURANT_MANAGER.H
-#define RESTAURANT_MANAGER.H
+#ifndef RESTAURANT_MANAGER_H
+#define RESTAURANT_MANAGER_H
 
 #include <vector>
 #include <string>
