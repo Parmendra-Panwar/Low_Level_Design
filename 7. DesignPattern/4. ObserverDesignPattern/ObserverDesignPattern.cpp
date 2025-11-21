@@ -44,7 +44,7 @@ public:
 
     void unsubscribe(ISubscriber *subs) override
     {
-        auto it = find(Subscribers.begin(), Subscribers.end(), Subscribers);
+        auto it = find(Subscribers.begin(), Subscribers.end(), subs);
         if (it != Subscribers.end())
         {
             Subscribers.erase(it);
@@ -100,6 +100,8 @@ int main()
     chen->unsubscribe(subs1);
 
     chen->uploadVideo("Decorator Pattern Tutorial");
-
+    delete subs1;
+    delete subs2;
+    delete chen;
     return 0;
 } 
