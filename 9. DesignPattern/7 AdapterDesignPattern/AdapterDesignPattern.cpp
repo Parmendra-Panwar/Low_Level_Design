@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// 1. Target interface expected by the client
+// 1. Target interface JO client access karega
 class IReport {
 public:
     // here takes the row fata string and return Json
@@ -34,10 +34,10 @@ public:
     }
 
     string getJsonData(const string& data) override {
-        // 1. Get XML from the adaptee
+        // 1. Get XML data fron raw data 
         string xml = xmlProvider->getXmlData(data);
 
-        // 2. converting to JSON
+        // 2. converting XML to JSON
         size_t startName = xml.find("<name>")+6;
         size_t endName   = xml.find("</name>");
         string name      = xml.substr(startName, endName - startName);
