@@ -15,7 +15,7 @@ class DeviceFactory {
             return new BluetoothSpeakerAdapter(new BluetoothSpeakerAPI());
         }else if(deviceType == DeviceType::WIRED){
             return new WiredSpeakerAdapter(new WiredSpeakerAPI());
-        }else if(deviceType == DeviceType::HEADPHONE){
+        }else{
             return new HeadphoneSpeakerAdapter(new HeadphoneSpeakerAPI());
         }
     }

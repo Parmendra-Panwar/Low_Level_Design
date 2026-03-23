@@ -31,6 +31,12 @@ class PlaylistManager {
         }
         playlists[playlistName]->addSongToPlaylist(song);
     }
+    void addSongToPlaylist(const string& playlistName, Song* song) {
+        if (!playlists.count(playlistName)) {
+            throw runtime_error("Playlist \"" + playlistName + "\" not found.");
+        }  
+        playlists[playlistName]->addSongToPlaylist(song);
+    }
     Playlist* getPlaylist(const string& name){
         if(!playlists.count(name)){
             throw runtime_error("Playlist Not Exist");
