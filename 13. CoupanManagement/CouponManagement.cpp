@@ -1,129 +1,125 @@
-#include <vector>
 #include <iostream>
+#include <vector>
+#include <string>
+#include <memory>
 
 using namespace std;
 
-class Product{
-    public:
-    string name;
-    string category;
-    double price;
+// --- 1. Strategy Pattern: Discount Types ---
+class DiscountStrategy {
+public:
+    virtual double applyDiscount(double amount) = 0;
+    virtual ~DiscountStrategy() = default;
 };
 
-class CartItem{
-    public:
-    Product* p;
-    int q; //quentity
-    CartItem(Product* p, int q){
-        this->p = p;
-        this->q = q;
-    }
-
-    double getTotal(){
-        return p->price*q;
-    };
+class FlatDiscount : public DiscountStrategy {
+    double off;
+public:
+    FlatDiscount(double amount) : off(amount) {}
+    double applyDiscount(double amount) override { return amount - off; }
 };
 
-class Cart{
-    public:
-    vector<CartItem*> items;
-    bool loyalityMem;
-    double initPrice;
-    double finalPrice;
-
-    void addProduct(Product* p, int q = 1){
-        items.push_back(new CartItem(p, q));
-    }
-    void applyDisc(double disAmount){
-        finalPrice -= disAmount;
-        if(finalPrice < 0) finalPrice = 0;
-    }
-};
-
-class DiscountStrategy{
-    public:
-    double calculate(double amt){};
-};
-
-class FlatDisStrategy : public DiscountStrategy{
-    public:
-    double amt;
-    FlatDisStrategy(double amt){
-        this->amt = amt;
-    }
-    double calculate(double d){
-        return min(d, amt);
-    }
-};
-
-class ParcentDisStrategy : public DiscountStrategy{
-    public:
-    double amt;
-    ParcentDisStrategy(double amt){
-        this->amt = amt;
-    }
-    double calculate(double d){
-        return (d*amt)/100;
-    }
-};
-
-class ParcentWithCapDisStrategy : public DiscountStrategy{
-    public:
+class PercentDiscount : public DiscountStrategy {
     double percent;
-    double amt;
-    ParcentWithCapDisStrategy(double percent,double amt){
-        this->amt = amt;
-        this->percent = percent;
-    }
-    double calculate(double d){
-        return ((d*percent)/100 > amt) ? amt : (d*percent)/100 > amt;
+public:
+    PercentDiscount(double p) : percent(p) {}
+    double applyDiscount(double amount) override { return amount * (1 - percent / 100.0); }
+};
+
+// --- 2. Chain of Responsibility: Coupon Validators ---
+struct Context { double cartAmount; bool isFirstOrder; };
+
+class CouponValidator {
+protected:
+    shared_ptr<CouponValidator> next;
+public:
+    void setNext(shared_ptr<CouponValidator> n) { next = n; }
+    virtual bool validate(Context& ctx) = 0;
+};
+
+class MinAmountValidator : public CouponValidator {
+    double minAmount;
+public:
+    MinAmountValidator(double m) : minAmount(m) {}
+    bool validate(Context& ctx) override {
+        if (ctx.cartAmount < minAmount) return false;
+        return next ? next->validate(ctx) : true;
     }
 };
 
-enum SType{
-    FLAT, 
-    PER,
-    PERWITHCAP
+class FirstOrderValidator : public CouponValidator {
+public:
+    bool validate(Context& ctx) override {
+        if (!ctx.isFirstOrder) return false;
+        return next ? next->validate(ctx) : true;
+    }
 };
 
-class DisStrategyManager{
-    private:
-    static DisStrategyManager* instance;
-    DisStrategyManager() {}
-    DisStrategyManager(const DisStrategyManager&) = delete;
-    DisStrategyManager& operator=(const DisStrategyManager&) = delete;
-    public:
-    static DisStrategyManager* getInstance(){
-        if (!instance) {
-            instance = new DisStrategyManager();
-        }
+// --- 3. Coupon Model ---
+class Coupon {
+public:
+    string code;
+    unique_ptr<DiscountStrategy> strategy;
+    shared_ptr<CouponValidator> chainHead;
+
+    Coupon(string c, unique_ptr<DiscountStrategy> s, shared_ptr<CouponValidator> v) 
+        : code(c), strategy(move(s)), chainHead(v) {}
+};
+
+// --- 4. Singleton: Coupon Manager ---
+class CouponManager {
+    vector<shared_ptr<Coupon>> coupons;
+    static CouponManager* instance;
+    CouponManager() {}
+
+public:
+    static CouponManager* getInstance() {
+        if (!instance) instance = new CouponManager();
         return instance;
     }
-    DiscountStrategy* getStragey(SType t, int amt, int precent = 1){
-        if(t == SType::FLAT){
-            return new FlatDisStrategy(amt);
-        }
-        if(t == SType::PER){
-            return new ParcentDisStrategy(amt);
-        }
-        if(t == SType::PERWITHCAP){
-            return new ParcentWithCapDisStrategy(precent, amt);
-        }
 
-        return nullptr;
+    void addCoupon(shared_ptr<Coupon> c) { coupons.push_back(c); }
+
+    double applyCoupon(string code, Context& ctx) {
+        for (auto& c : coupons) {
+            if (c->code == code) {
+                if (c->chainHead->validate(ctx)) {
+                    return c->strategy->applyDiscount(ctx.cartAmount);
+                }
+            }
+        }
+        return ctx.cartAmount; // No discount applied
     }
 };
+CouponManager* CouponManager::instance = nullptr;
 
-DisStrategyManager* DisStrategyManager::instance = nullptr; 
+// --- Happy Flow ---
+int main() {
+    // 1. Setup Validators (Chain)
+    auto minAmt = make_shared<MinAmountValidator>(500);
+    auto firstOrder = make_shared<FirstOrderValidator>();
+    minAmt->setNext(firstOrder);
 
-class Coupon{
-    public:
-    Coupon* next;
-    
-};
+    // 2. Setup Coupon with Strategy
+    auto promoCoupon = make_shared<Coupon>(
+        "WELCOME100", 
+        make_unique<PercentDiscount>(20), // 20% Off
+        minAmt
+    );
 
-int main(){
+    CouponManager::getInstance()->addCoupon(promoCoupon);
 
+    // 3. User Context (Happy Flow)
+    Context userCtx = { 1000.0, true }; // Above 500 and is first order
+
+    double finalPrice = CouponManager::getInstance()->applyCoupon("WELCOME100", userCtx);
+
+    cout << "Original Price: ₹1000\n";
+    if (finalPrice < 1000) {
+        cout << "Coupon Applied! Final Price: ₹" << finalPrice << endl;
+    } else {
+        cout << "Coupon Invalid for current cart." << endl;
+    }
 
     return 0;
 }
