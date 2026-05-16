@@ -85,6 +85,11 @@ To become a proficient C++ engineer or developer, there's a broad set of concept
 
 ### Core Language Mastery
 - **Object-Oriented Programming (OOP):** Understand classes, inheritance (including multiple and virtual inheritance), polymorphism (virtual functions, abstract classes), encapsulation, and constructors/destructors.
+- **Data structures and algorithms:**
+- **Design patterns** (Creational, Structural, Behavioral)
+- **Multi-threading** and concurrency, avoiding deadlocks and race conditions
+- **Networking basics** if developing distributed or networked applications
+- **JSON**
 - **Templates and Generic Programming:** Learn how to write template functions and classes, including template specialization and variadic templates.
 - **Move Semantics and Rvalue References:** Crucial for efficient resource management in modern C++.
 - **Exception Handling:** Proper use of try-catch blocks, custom exceptions, noexcept keyword.
@@ -123,13 +128,6 @@ To become a proficient C++ engineer or developer, there's a broad set of concept
 - Unit testing frameworks: Google Test, Catch2
 - Version control: Git
 
-### Key Programming Concepts
-- Data structures and algorithms
-- Design patterns (singleton, factory, observer, etc.)
-- Multi-threading and concurrency, avoiding deadlocks and race conditions
-- Networking basics if developing distributed or networked applications
-- JSON
-
 ### Kahaan Use Hoti Hai C++
 
 - **Game Engines aur Graphics**: Unreal Engine, Unity jaise game engines ka main code C++ me likha hota hai.[6][1]
@@ -161,9 +159,9 @@ To become a proficient C++ engineer or developer, there's a broad set of concept
 
 ### project
 
-| Level            | Project Title                   | Description & Key Skills                                                | Skills Needed                                               | Target Companies (3-4 Examples)                       |
-|------------------|--------------------------------|-----------------------------------------------------------------------|-------------------------------------------------------------|------------------------------------------------------|
-| **Product (Zoho-Level)** | Scalable Real-time Chat Server    | Distributed messaging server with multi-client concurrency, message queues, state management | C++, STL, Multithreading, Socket Programming, Distributed Systems basics | Meta (Messenger), Slack, Zoom, Discord               |
+| Level   | Project Title   | Description & Key Skills      | Skills Needed            | Target Companies (3-4 Examples)             |
+|------------------|--------------------------------|--------------------------------------------|---------------------|-----------------|
+| **Zoho-Level** | Scalable Real-time Chat Server    | Distributed messaging server with multi-client concurrency, message queues, state management | C++, STL, Multithreading, Socket Programming, Distributed Systems basics | Meta (Messenger), Slack, Zoom, Discord               |
 |                  | In-Memory Key-Value Store         | Fast concurrent key-value storage with transactions and persistence    | C++, Data Structures, Concurrency, File I/O, Transactions   | Redis Labs, Memcached, Couchbase, Aerospike          |
 |                  | File Sync & Backup Tool            | Multi-threaded file synchronization with diff algorithms and resumable uploads | C++, STL, Multithreading, File System APIs, Networking      | Dropbox, Box, Google Drive, Microsoft OneDrive       |
 |                  | Secure Login System with 2FA       | User auth with encryption, hashing, and two-factor authentication      | C++, Cryptography (hashing, encryption), Security, STL      | Zoho, Okta, Auth0, Duo Security                       |
