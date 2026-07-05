@@ -2,34 +2,41 @@
 
 Welcome to my **C++ LLD Learning Repo** 
 I’m starting from the **core OOP concepts** before diving deep into **LLD design principles** and **patterns**.
+Before going into HLD design, it’s important to understand the foundation of LLD.
 
-## Current Focus: Object-Oriented Programming (OOP)
-Before going into system-level design, it’s important to master the basics of OOP — the foundation of LLD.
-
----
-
-## 🧩 What’s Covered
-
-| Folder | Concept               | Description                                                                         | Folder Path               |
-| ------ | --------------------- | ----------------------------------------------------------------------------------- | ------------------------- |
-| 0.0    | All You Need          | Everything you need to learn in C++ to become a proficient developer                |                           |
-| 1.0    | Class & Object        | Blueprint and real-world instances in object-oriented programming                   | /OOPM/                    |
-| 1.1    | Abstraction           | Hiding complex implementation details and showing only essential features           | /OOPM/abstraction/        |
-| 1.2    | Encapsulation         | Wrapping data and methods together while restricting direct access                  | /OOPM/encapsulation/      |
-| 1.3    | Inheritance           | Creating new classes using properties and behavior of existing ones                 | /OOPM/inheritance/        |
-| 1.4    | Polymorphism          | Allowing the same function or method to behave differently in various contexts      | /OOPM/polymorphism/       |
-| 1.5    | Exception Handling    | Managing runtime errors gracefully to ensure program stability                      | /OOPM/exception_handling/ |
-| 2.0    | UML Diagrams          | Key UML diagrams used to visualize and design object-oriented systems               | /UML_Di/                  |
-| 3.1    | Single Responsibility | A class should have only one reason to change (one responsibility)                  | /SOLID/1single/           |
-| 3.2    | Open/Closed           | Software entities should be open for extension but closed for modification          | /SOLID/2open/             |
-| 3.3    | Liskov Substitution   | Subclasses should be substitutable for their base classes without altering behavior | /SOLID/3liskov/           |
-| 3.4    | Interface Segregation | Clients should not be forced to depend on interfaces they do not use                | /SOLID/4interface/        |
-| 3.5    | Dependency Inversion  | Depend on abstractions, not on concrete implementations                             | /SOLID/5dependency/       |
+*Due to arrangement of folder by numbers higher number folder like 10 is arranged before 2 so please go by number 1 2 3...end so on*
 
 ---
 
+### OOPM And SOLID
+| Folder | Concept          | Description                                                                         | Folder Path                                                                              |
+| ------ | ---------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| 0.0    | All You Need     | Everything you need to learn in C++ to become a proficient developer                | [Location](https://github.com/Parmendra-Panwar/Low_Level_Design/tree/main/0.%20BasicCpp) |
+| 1.0    | OOPM             | Blueprint and real-world instances in object-oriented programming                   | [Location](https://github.com/Parmendra-Panwar/Low_Level_Design/tree/main/1.%20OOPM)     |
+| 2.0    | UML Diagrams     | Key UML diagrams used to visualize and design object-oriented systems               | [Location](https://github.com/Parmendra-Panwar/Low_Level_Design/tree/main/2.%20UML_Di)   |
+| 3.0    | SOLID            | Aimed at making software more understandable, flexible, and maintainable.           | [Location](https://github.com/Parmendra-Panwar/Low_Level_Design/tree/main/3.%20SOLID)    |
 
-for theory 
-ByteByteGo, GFG (https://www.geeksforgeeks.org/system-design/creational-design-pattern/)
+### Document management LLD
+| 4.0    | Document         | Document management LLD | [Location](https://github.com/Parmendra-Panwar/Low_Level_Design/tree/main/3.%20SOLID)    |
 
-software development- https://www.geeksforgeeks.org/software-engineering/top-8-software-development-models-used-in-industry/
+## Design Patterns
+Design patterns are standard, time-tested solutions to common problems in software design. They are divided into Creational, Structural, and Behavioral categories.
+
+#### Creational Patterns
+These patterns deal with object creation mechanisms, trying to create objects in a manner suitable to the situation.
+
+| Folder | Concept          | Description                                                                         | Folder Path                                                                              |
+| ------ | ---------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| x.0    | All You Need     | Everything you need to learn in C++ to become a proficient developer                | [Location](https://github.com/Parmendra-Panwar/Low_Level_Design/tree/main/0.%20BasicCpp) |
+
+#### Structural Patterns
+These patterns explain how to assemble objects and classes into larger structures while keeping these structures flexible and efficient.
+| Folder | Concept          | Description                                                                         | Folder Path                                                                              |
+| ------ | ---------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| x.0    | All You Need     | Everything you need to learn in C++ to become a proficient developer                | [Location](https://github.com/Parmendra-Panwar/Low_Level_Design/tree/main/0.%20BasicCpp) |
+
+#### Behavioral Patterns
+These patterns are concerned with algorithms and the assignment of responsibilities between objects.
+| Folder | Concept          | Description                                                                         | Folder Path                                                                              |
+| ------ | ---------------- | ----------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| x.0    | All You Need     | Everything you need to learn in C++ to become a proficient developer                | [Location](https://github.com/Parmendra-Panwar/Low_Level_Design/tree/main/0.%20BasicCpp) |
