@@ -5,15 +5,13 @@
 
 using namespace std;
 
-class ISubscriber
-{
+class ISubscriber {
     public:
     virtual void update() = 0;
     virtual ~ISubscriber() {};
 };
 
-class IChannel
-{
+class IChannel {
     public:
     virtual void subscribe(ISubscriber *subs) = 0;
     virtual void unsubscribe(ISubscriber *subs) = 0;
@@ -21,46 +19,37 @@ class IChannel
     virtual ~IChannel() {}
 };
 
-class Channel : public IChannel
-{
+class Channel : public IChannel {
 private:
     string name;
     vector<ISubscriber *> Subscribers;
     string latestVideo;
 
 public:
-    Channel(const string &name)
-    {
+    Channel(const string &name) {
         this->name = name;
     }
 
-    void subscribe(ISubscriber *subs) override
-    {
-        if (find(Subscribers.begin(), Subscribers.end(), subs) == Subscribers.end())
-        {
+    void subscribe(ISubscriber *subs) override {
+        if (find(Subscribers.begin(), Subscribers.end(), subs) == Subscribers.end()) {
             Subscribers.push_back(subs);
         }
     }
 
-    void unsubscribe(ISubscriber *subs) override
-    {
+    void unsubscribe(ISubscriber *subs) override {
         auto it = find(Subscribers.begin(), Subscribers.end(), subs);
-        if (it != Subscribers.end())
-        {
+        if (it != Subscribers.end()) {
             Subscribers.erase(it);
         }
     }
 
-    void uploadVideo(const string &title)
-    {
+    void uploadVideo(const string &title) {
         latestVideo = title;
         cout << "\n[" << name << " uploaded \"" << title << "\"]\n";
         notify();
     }
-    void notify() override
-    {
-        for (ISubscriber *sub : Subscribers)
-        {
+    void notify() override {
+        for (ISubscriber *sub : Subscribers) {
             sub->update();
         }
     }
@@ -69,15 +58,13 @@ public:
     }
 };
 
-class Subscriber : public ISubscriber
-{
+class Subscriber : public ISubscriber {
 private:
     string name;
     Channel *channel;
 
 public:
-    Subscriber(string name, Channel *channel)
-    {
+    Subscriber(string name, Channel *channel) {
         this->name = name;
         this->channel = channel;
     }
@@ -86,8 +73,7 @@ public:
     }
 };
 
-int main()
-{
+int main() {
     Channel *chen = new Channel("coder army");
     Subscriber *subs1 = new Subscriber("Rahul", chen);
     Subscriber *subs2 = new Subscriber("Sayam", chen);
